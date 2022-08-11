@@ -6,6 +6,7 @@ export Revise, revise, includet
 # import LinearAlgebra
 using OhMyREPL
 using Pkg
+using ReadableRegex
 
 function startup()
     # Environment variables
