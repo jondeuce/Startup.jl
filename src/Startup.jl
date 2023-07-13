@@ -6,6 +6,8 @@ export Revise, revise, includet
 # import LinearAlgebra
 using OhMyREPL
 using Pkg
+using ReadableRegex
+using SnoopPrecompile
 
 function startup()
     # Environment variables
@@ -45,6 +47,6 @@ function startup()
 end
 
 # Precompilation
-startup()
+@precompile_all_calls startup()
 
 end # module Startup
