@@ -4,8 +4,9 @@ authors = ["Jonathan Doucette <jdoucette@physics.ubc.ca>"]
 version = "0.1.0"
 
 [deps]
+BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
 OhMyREPL = "5fb14364-9ced-5910-84b2-373655c76a03"
 Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
-ReadableRegex = "cbbcb084-453d-4c4c-b292-e315607ba6a4"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
 Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 SnoopPrecompile = "66db9d55-30c0-4569-8b51-7e840670fc0c"

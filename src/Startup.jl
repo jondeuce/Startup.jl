@@ -3,28 +3,31 @@ module Startup
 using Revise
 export Revise, revise, includet
 
-# import LinearAlgebra
+using Reexport
+@reexport using BenchmarkTools
+@reexport using Pkg
+
+# using LinearAlgebra
 using OhMyREPL
-using Pkg
-using ReadableRegex
 using SnoopPrecompile
+# using UnicodePlots
 
 function startup()
-    # Environment variables
+    #### Environment variables
 
     # ENV["JULIA_PKG_DEVDIR"] = ENV["HOME"] * "/.julia/dev" # this is the default
     # ENV["PLOTS_DEFAULT_BACKEND"] = "PyPlot"
     # ENV["JULIA_STACKTRACE_MINIMAL"] = true # minimal stack trace with AbbreviatedStackTraces.jl
 
-    # Standard libraries
+    #### LinearAlgebra
 
     # LinearAlgebra.BLAS.set_num_threads(Threads.nthreads())
 
-    # AbbreviatedStackTraces
+    #### AbbreviatedStackTraces
 
-    # Revise
+    #### Revise
 
-    # OhMyREPL
+    #### OhMyREPL
 
     if !Sys.iswindows()
         # Causes huge lag on v1.3?
@@ -37,7 +40,13 @@ function startup()
     #OhMyREPL.output_prompt!(">", :red)
     OhMyREPL.enable_pass!("RainbowBrackets", false)
 
-    # Pkg
+    #### UnicodePlots
+
+    # lineplot(rand(10), rand(10), title = "Lineplot")
+    # scatterplot(rand(10), rand(10), title = "Scatterplot")
+    # heatmap(rand(10, 10), title = "Heatmap")
+
+    #### Pkg
 
     if isfile("Project.toml")
         Pkg.activate(".")
