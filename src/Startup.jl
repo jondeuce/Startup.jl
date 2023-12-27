@@ -1,15 +1,19 @@
 module Startup
 
-using Revise
-export Revise, revise, includet
-
 using Reexport
-@reexport using BenchmarkTools
-@reexport using Pkg
 
-# using LinearAlgebra
+#### Stdlibs
+
+@reexport using LinearAlgebra
+@reexport using Pkg
+@reexport using Statistics
+
+#### Other packages
+
+@reexport using BenchmarkTools
+@reexport using Revise
 using OhMyREPL
-using SnoopPrecompile
+using PrecompileTools
 # using UnicodePlots
 
 function startup()
@@ -36,9 +40,9 @@ function startup()
         OhMyREPL.colorscheme!("BoxyMonokai256")
     end
     OhMyREPL.enable_autocomplete_brackets(false)
+    OhMyREPL.enable_pass!("RainbowBrackets", false)
     OhMyREPL.input_prompt!("julia-" * string(VERSION) * "> ", :green)
     #OhMyREPL.output_prompt!(">", :red)
-    OhMyREPL.enable_pass!("RainbowBrackets", false)
 
     #### UnicodePlots
 
@@ -56,6 +60,6 @@ function startup()
 end
 
 # Precompilation
-@precompile_all_calls startup()
+@compile_workload startup()
 
 end # module Startup
