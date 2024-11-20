@@ -11,9 +11,11 @@ using Reexport
 #### Other packages
 
 @reexport using BenchmarkTools
+@reexport using Chairmarks
 @reexport using Revise
+
 using OhMyREPL
-using PrecompileTools
+# using PrecompileTools
 # using UnicodePlots
 
 function startup()
@@ -56,10 +58,18 @@ function startup()
         Pkg.activate(".")
     end
 
+    #### Load project environment file, if it exists
+
+    env_file = joinpath(dirname(Base.active_project()), ".env.jl")
+    if isfile(env_file)
+        Main.include(env_file)
+    end
+
     return nothing
 end
 
-# Precompilation
-@compile_workload startup()
+#### Precompilation
+
+# @compile_workload startup()
 
 end # module Startup
